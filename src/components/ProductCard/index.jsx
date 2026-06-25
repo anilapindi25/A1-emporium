@@ -5,8 +5,32 @@ import { FaStar, FaHeart } from 'react-icons/fa';
 import CartContext from '../../context/CartContext';
 import './index.css';
 
+const getShortName = (fullName) => {
+  const nameMap = {
+    'Pure Kanchipuram Gold Zari Silk Saree': 'Kanchipuram Silk Saree',
+    'Handcrafted Royal Brass Peacock Diya Lamp': 'Brass Peacock Diya',
+    'Sacred Lord Ganesha Antique Brass Statue': 'Brass Ganesha Idol',
+    'Floral Brass Urli Bowl for Floating Flowers': 'Brass Urli Bowl',
+    'Traditional Brass Pooja Thali Set': 'Brass Pooja Thali',
+    'Royal Banarasi Brocade Silk Saree': 'Banarasi Wedding Saree',
+    'Sacred Lakshmi Antique Brass Idol': 'Brass Lakshmi Idol',
+    'Royal Brass Hanging Bell with Chain': 'Brass Hanging Bell',
+    'Classic Handloom Cotton Saree': 'Handloom Cotton Saree',
+    'Designer Floral Print Cotton Saree': 'Floral Cotton Saree',
+    'Premium Silk Blend Party Wear Saree': 'Silk Blend Saree',
+    'Designer Zari Work Georgette Saree': 'Zari Georgette Saree',
+    'Brass Decorative Kalash for Pooja': 'Brass Kalash',
+    'Ornate Brass Diya Stand Set': 'Brass Diya Stand',
+    'Premium Brass Dinner Utensils Set': 'Brass Dinner Set'
+  };
+  return nameMap[fullName] || fullName;
+};
+
 const ProductCard = ({ product, onQuickView }) => {
   const { 
+    cartList,
+    onIncreaseQuantity,
+    onDecreaseQuantity,
     addToCart, 
     toggleWishlist, 
     isInWishlist, 
@@ -17,6 +41,8 @@ const ProductCard = ({ product, onQuickView }) => {
   const navigate = useNavigate();
   
   const { id, name, price, originalPrice, rating, images, stockStatus, category, brand } = product;
+  const cartItem = cartList.find(item => item.id === id);
+  const quantity = cartItem ? cartItem.quantity : 0;
   const isWishlisted = isInWishlist(id);
   const isCompared = compareList.some(item => item.id === id);
   
@@ -68,14 +94,12 @@ const ProductCard = ({ product, onQuickView }) => {
           loading="lazy"
         />
         
-        {/* Badges */}
-        <div className="product-card-badges">
-          {discount > 0 && <span className="discount-badge">-{discount}% OFF</span>}
-          {stockStatus === 'Low Stock' && <span className="stock-badge low-stock">Low Stock</span>}
-          {stockStatus === 'Out of Stock' && <span className="stock-badge out-of-stock">Out of Stock</span>}
-        </div>
+        {/* Discount Badge top-left */}
+        {discount > 0 && (
+          <span className="discount-badge">-{discount}%</span>
+        )}
 
-        {/* Wishlist Heart Icon */}
+        {/* Wishlist Heart Icon top-right */}
         <button 
           className={`wishlist-toggle-btn ${isWishlisted ? 'active' : ''}`}
           onClick={handleWishlist}
@@ -83,84 +107,55 @@ const ProductCard = ({ product, onQuickView }) => {
         >
           {isWishlisted ? <FaHeart /> : <FiHeart />}
         </button>
-
-        {/* Hover Action Overlay */}
-        <div className="product-card-overlay">
-          <div className="overlay-actions-row">
-            <button 
-              className="circle-action-btn" 
-              onClick={handleQuickViewClick}
-              title="Quick View"
-              aria-label="Quick View"
-            >
-              <FiEye />
-            </button>
-            <button 
-              className="circle-action-btn" 
-              onClick={handleAddToCart}
-              title="Add to Cart"
-              aria-label="Add to Cart"
-              disabled={stockStatus === 'Out of Stock'}
-            >
-              <FiShoppingCart />
-            </button>
-          </div>
-          <button 
-            className="buy-now-overlay-btn" 
-            onClick={handleBuyNow}
-            disabled={stockStatus === 'Out of Stock'}
-          >
-            Buy Now
-          </button>
-        </div>
       </div>
 
       {/* Product Details */}
       <div className="product-card-info">
-        <div className="product-brand-row">
-          <span className="product-card-brand">{brand}</span>
-          <span className="product-card-category">{category}</span>
-        </div>
-        
-        <h3 className="product-card-title">{name}</h3>
+        <span className="product-card-category">{category}</span>
+        <h3 className="product-card-title">{getShortName(name)}</h3>
         
         {/* Rating */}
         <div className="product-card-rating">
-          <span className="stars-wrapper">
-            <FaStar className="gold-star" />
-            <span>{rating.toFixed(1)}</span>
+          <FaStar className="gold-star" />
+          <span>{rating.toFixed(1)}</span>
+        </div>
+
+        {/* Pricing */}
+        <div className="product-card-price-row">
+          <span className="price-current">₹{price.toLocaleString('en-IN')}</span>
+          {originalPrice && (
+            <span className="price-original">₹{originalPrice.toLocaleString('en-IN')}</span>
+          )}
+          {discount > 0 && (
+            <span className="price-discount-percent">{discount}% OFF</span>
+          )}
+        </div>
+
+        {/* Stock status message */}
+        <div className="product-card-stock-row">
+          <span className={`stock-status-text ${stockStatus === 'Low Stock' ? 'low-stock' : stockStatus === 'Out of Stock' ? 'out-of-stock' : 'in-stock'}`}>
+            {stockStatus === 'Low Stock' ? 'Only Few Left' : stockStatus}
           </span>
         </div>
 
-        {/* Pricing & Compare checkbox */}
-        <div className="product-card-price-row" style={{ marginTop: 'auto', marginBottom: '12px' }}>
-          <div className="prices-col">
-            <span className="price-current">₹{price.toLocaleString('en-IN')}</span>
-            {originalPrice && (
-              <span className="price-original">₹{originalPrice.toLocaleString('en-IN')}</span>
-            )}
-          </div>
+        {/* Action Button */}
+        <div className="product-card-action">
+          {stockStatus === 'Out of Stock' ? (
+            <button className="premium-add-to-cart-card-btn sold-out" disabled>
+              Sold Out
+            </button>
+          ) : quantity > 0 ? (
+            <div className="quantity-controls-card" onClick={(e) => e.stopPropagation()}>
+              <button className="qty-card-btn" onClick={() => onDecreaseQuantity(cartItem.cartItemId)}>-</button>
+              <span className="qty-card-val">{quantity}</span>
+              <button className="qty-card-btn" onClick={() => onIncreaseQuantity(cartItem.cartItemId)}>+</button>
+            </div>
+          ) : (
+            <button className="premium-add-to-cart-card-btn" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+          )}
         </div>
-
-        {/* Visible Premium Add to Bag Button */}
-        <button 
-          className="premium-add-to-cart-card-btn btn-gold" 
-          onClick={handleAddToCart}
-          disabled={stockStatus === 'Out of Stock'}
-        >
-          <FiShoppingCart /> {stockStatus === 'Out of Stock' ? 'Sold Out' : 'Add to Bag'}
-        </button>
-
-        {/* Side-by-Side Product Comparison Checkbox */}
-        <label className="compare-checkbox-container" onClick={(e) => e.stopPropagation()}>
-          <input
-            type="checkbox"
-            checked={isCompared}
-            onChange={handleCompareChange}
-          />
-          <span>Add to Compare</span>
-        </label>
-
       </div>
     </div>
   );

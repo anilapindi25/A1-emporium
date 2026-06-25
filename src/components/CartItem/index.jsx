@@ -22,10 +22,13 @@ const CartItem = ({ item }) => {
     selectedSize, 
     selectedColor, 
     quantity, 
-    stockStatus 
+    stockStatus,
+    category,
+    collection
   } = item;
 
   const isWishlisted = isInWishlist(id);
+  const isBrass = category?.toLowerCase().includes('brass') || collection?.toLowerCase().includes('brass') || name?.toLowerCase().includes('brass');
 
   const handleRemove = () => {
     removeFromCart(cartItemId);
@@ -48,9 +51,13 @@ const CartItem = ({ item }) => {
         <h4 className="cart-item-name">{name}</h4>
         
         <div className="cart-item-meta">
-          <span className="meta-badge">Size: {selectedSize}</span>
-          {selectedColor && selectedColor !== 'Default' && (
-            <span className="meta-badge">Color: {selectedColor.name || selectedColor}</span>
+          {!isBrass && (
+            <>
+              <span className="meta-badge">Size: {selectedSize}</span>
+              {selectedColor && selectedColor !== 'Default' && (
+                <span className="meta-badge">Color: {selectedColor.name || selectedColor}</span>
+              )}
+            </>
           )}
         </div>
 

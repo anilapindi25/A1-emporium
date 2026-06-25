@@ -5,7 +5,7 @@
 }
 
 .home-section {
-  padding: 80px 24px;
+  padding: 32px 0;
 }
 
 .bg-accent-light {
@@ -47,11 +47,21 @@
 .hero-slide-bg {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center 25%;
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* Align to lower-left */
+  padding-bottom: 112px; /* Generous bottom padding for breathing space */
   position: relative;
+}
+
+.hero-slide-image-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 
 .hero-bg-overlay {
@@ -60,8 +70,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to right, rgba(122, 31, 61, 0.45) 0%, rgba(201, 162, 39, 0.1) 100%),
-              linear-gradient(to bottom, rgba(255, 248, 242, 0.2) 0%, rgba(122, 31, 61, 0.2) 100%);
+  /* Subtle left-to-right dark gradient (25% - 35% opacity) only to improve readability */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.20) 45%, rgba(0, 0, 0, 0.0) 100%);
   z-index: 1;
 }
 
@@ -70,44 +80,44 @@
   z-index: 10;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
 }
 
-.hero-text-card {
-  max-width: 620px;
-  padding: 48px;
-  border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: var(--shadow-lg);
+.hero-text-container {
+  max-width: 580px; /* Bounded width so it doesn't cover key product parts */
+  padding: 0 12px;
 }
 
 .hero-tagline {
   font-family: var(--font-btn);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   text-transform: uppercase;
-  color: var(--secondary-gold);
+  color: #F3C472; /* Lighter gold for high visibility on dark background */
   letter-spacing: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 24px; /* Increased breathing space */
   display: block;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-heading {
   font-family: var(--font-heading);
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--primary-maroon);
-  line-height: 1.2;
-  margin-bottom: 20px;
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--card-white);
+  line-height: 1.15;
+  margin-bottom: 32px; /* Increased breathing space directly to buttons */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subheading {
   font-family: var(--font-body);
-  font-size: 16px;
-  color: var(--text-dark);
-  margin-bottom: 32px;
-  line-height: 1.7;
+  font-size: 17px;
+  color: rgba(255, 248, 242, 0.85); /* Cream text for warm premium contrast */
+  margin-bottom: 40px; /* Increased breathing space before buttons */
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-buttons {
@@ -115,10 +125,21 @@
   gap: 16px;
 }
 
+.hero-buttons button {
+  width: 200px !important; /* Size buttons to content/fixed width, no full-width stretching */
+  min-width: 180px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--border-radius-md);
+  box-sizing: border-box;
+}
+
 .hero-buttons .btn-outline {
-  border-color: var(--primary-maroon);
+  border: 2px solid var(--primary-maroon);
   color: var(--primary-maroon);
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 248, 242, 0.9); /* High contrast cream background directly on image */
+  font-weight: 700;
 }
 
 .hero-buttons .btn-outline:hover {
@@ -431,35 +452,48 @@
 
 @media (max-width: 768px) {
   .hero-slider-section {
-    height: 80vh;
+    height: 65vh; /* Proportional banner height around 60-70vh */
+    min-height: 420px;
   }
   
   .hero-slide-item {
-    height: 80vh;
+    height: 65vh;
+    min-height: 420px;
+  }
+
+  .hero-slide-bg {
+    padding-bottom: 40px; /* Reduced padding on mobile */
   }
   
-  .hero-text-card {
-    padding: 32px 24px;
-    margin: 0 12px;
+  .hero-text-container {
+    padding: 0;
   }
 
   .hero-heading {
     font-size: 32px;
+    line-height: 1.25;
+    margin-bottom: 16px;
   }
 
   .hero-subheading {
     font-size: 14px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    line-height: 1.5;
   }
 
   .hero-buttons {
-    flex-direction: column;
-    width: 100%;
+    display: flex;
+    flex-direction: row;
     gap: 12px;
+    width: auto;
   }
 
   .hero-buttons button {
-    width: 100%;
+    flex: none !important;
+    width: 170px !important; /* Size buttons appropriately to content/170px wide, no full-width stretching */
+    font-size: 13px;
+    height: 44px;
+    padding: 0;
   }
 
   .flash-sale-banner-widget {
@@ -482,7 +516,7 @@
   }
 
   .home-section {
-    padding: 60px 24px;
+    padding: 24px 0;
   }
   
   .why-choose-grid {
@@ -503,5 +537,16 @@
     padding: 12px 20px;
     width: calc(50% - 12px);
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .hero-buttons button {
+    width: 100%;
   }
 }

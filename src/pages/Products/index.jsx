@@ -29,6 +29,7 @@ const Products = () => {
   const [filters, setFilters] = useState(defaultFilters);
   const [viewMode, setViewMode] = useState('grid');
   const [currentPage, setCurrentPage] = useState(1);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   const itemsPerPage = 8;
 
   // Update page title dynamically when category filter changes
@@ -127,8 +128,17 @@ const Products = () => {
     }
 
     // 2. Category Checkboxes
-    if (filters.categories.length > 0 && !filters.categories.includes(product.category)) {
-      return false;
+    if (filters.categories.length > 0) {
+      const hasMatch = filters.categories.some(selectedCategory => {
+        if (selectedCategory === 'Brass Collection') {
+          return ['Brass Lamps', 'Brass Idols', 'Brass Pooja', 'Brass Home Decor'].includes(product.category);
+        } else if (selectedCategory === 'Sarees') {
+          return ['Wedding Sarees', 'Silk Sarees', 'Cotton Sarees', 'Handloom Sarees'].includes(product.category);
+        } else {
+          return product.category === selectedCategory;
+        }
+      });
+      if (!hasMatch) return false;
     }
 
     // 3. Brand Checkboxes
@@ -203,18 +213,14 @@ const Products = () => {
     const params = new URLSearchParams(location.search);
     if (params.get('bestseller') === 'true') return "Best Sellers";
     if (params.get('newarrivals') === 'true') return "New Arrivals";
-    return "Women's Department Catalog";
+    return "Brass & Sarees Heritage Catalog";
   };
 
   // Dynamic count label based on active category
   const getProductCountLabel = () => {
     if (filters.categories.length === 1) {
       const activeCat = filters.categories[0];
-      let suffix = activeCat;
-      if (activeCat === 'Jewellery') suffix = 'Jewellery Items';
-      else if (activeCat === 'Footwear') suffix = 'Footwear Items';
-      else if (activeCat === 'Beauty') suffix = 'Beauty Products';
-      return `Showing ${totalItems} ${suffix}`;
+      return `Showing ${totalItems} ${activeCat}`;
     }
     return `Showing ${totalItems} Products`;
   };
@@ -227,9 +233,9 @@ const Products = () => {
       <div className="products-hero-banner">
         <div className="banner-overlay-dark"></div>
         <div className="banner-text container">
-          <span className="banner-sub">A1 Department Store</span>
+          <span className="banner-sub">A1 Traditional Indian Emporium</span>
           <h1 className="banner-title">{getBannerTitle()}</h1>
-          <p className="banner-desc">Explore luxury fashion, beauty products, handbags, footwear, and accessories tailored for modern grace.</p>
+          <p className="banner-desc">Explore luxury handloom silk sarees, brass stand lamps, sacred idols, and heritage pooja decor crafted for traditional grace.</p>
         </div>
       </div>
 
@@ -257,12 +263,24 @@ const Products = () => {
         </div>
 
         <div className="products-layout-wrapper">
-          {/* Sidebar Filters */}
-          <aside className="products-sidebar-area">
+          {/* Dim background overlay for mobile bottom sheet */}
+          {showMobileFilters && (
+            <div className="sidebar-overlay-dim" onClick={() => setShowMobileFilters(false)}></div>
+          )}
+
+          {/* Sidebar Filters - transformed into bottom-sheet on mobile */}
+          <aside className={`products-sidebar-area ${showMobileFilters ? 'mobile-show' : ''}`}>
+            <div className="mobile-sidebar-header">
+              <h4>Filter Products</h4>
+              <button className="close-sidebar-btn" onClick={() => setShowMobileFilters(false)}>✕</button>
+            </div>
             <FilterSidebar
               filters={filters}
               onFilterChange={handleFilterChange}
-              onResetFilters={handleResetFilters}
+              onResetFilters={() => {
+                handleResetFilters();
+                setShowMobileFilters(false);
+              }}
             />
           </aside>
 
@@ -276,6 +294,13 @@ const Products = () => {
               </div>
               
               <div className="results-actions-col">
+                <button 
+                  type="button" 
+                  className="mobile-filter-trigger-btn"
+                  onClick={() => setShowMobileFilters(true)}
+                >
+                  Filters
+                </button>
                 <div className="view-toggles-wrapper">
                   <button 
                     className={`view-toggle-btn ${viewMode === 'grid' ? 'active' : ''}`}

@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { 
   FiShoppingCart, FiHeart, FiUser, FiSearch, 
-  FiMenu, FiX, FiLogOut, FiSun, FiMoon, FiBell, FiLayers 
+  FiMenu, FiX, FiLogOut, FiSun, FiMoon, FiBell, FiLayers,
+  FiHome, FiGrid, FiFeather
 } from 'react-icons/fi';
 import CartContext from '../../context/CartContext';
 import './index.css';
@@ -28,6 +29,7 @@ const Navbar = () => {
   const [notifOpen, setNotifOpen] = useState(false);
   
   const navigate = useNavigate();
+  const location = useLocation();
   const token = Cookies.get('jwt_token');
 
   const handleLogout = () => {
@@ -53,8 +55,26 @@ const Navbar = () => {
   const wishlistCount = wishlist.length;
   const compareCount = compareList.length;
 
+  const getNavItemClass = (path, category = null) => {
+    const searchParams = new URLSearchParams(location.search);
+    const currentCategory = searchParams.get('category');
+    
+    if (path === '/') {
+      return location.pathname === '/' ? 'bottom-nav-item active' : 'bottom-nav-item';
+    }
+    if (path === '/products') {
+      return location.pathname === '/products' && currentCategory === category ? 'bottom-nav-item active' : 'bottom-nav-item';
+    }
+    return location.pathname === path ? 'bottom-nav-item active' : 'bottom-nav-item';
+  };
+
   return (
-    <nav className="navbar-container glassmorphism">
+    <nav className="navbar-container">
+      {/* Mobile menu backdrop overlay */}
+      {mobileMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)}></div>
+      )}
+
       <div className="navbar-inner container">
         {/* Mobile Toggle */}
         <button className="mobile-toggle-btn" onClick={toggleMobileMenu} aria-label="Toggle Navigation Menu">
@@ -64,14 +84,17 @@ const Navbar = () => {
         {/* Brand Logo */}
         <Link to="/" className="navbar-logo-link">
           <span className="logo-icon">A1</span>
-          <div className="logo-text-wrapper">
-            <span className="logo-main">A1 Emporium</span>
-            <span className="logo-sub">Lifestyle Department</span>
-          </div>
+          <span className="logo-main">A1 Emporium</span>
         </Link>
 
         {/* Navigation Links */}
         <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+          <li className="mobile-menu-header">
+            <h4>Menu</h4>
+            <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close Menu">
+              <FiX />
+            </button>
+          </li>
           <li>
             <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} onClick={() => setMobileMenuOpen(false)}>
               Home
@@ -92,6 +115,33 @@ const Navbar = () => {
               About Us
             </NavLink>
           </li>
+          
+          {/* Mobile drawer specific links */}
+          <li className="mobile-only-link">
+            <NavLink to="/compare" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} onClick={() => setMobileMenuOpen(false)}>
+              Compare Products ({compareCount})
+            </NavLink>
+          </li>
+          {token ? (
+            <>
+              <li className="mobile-only-link">
+                <NavLink to="/profile" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} onClick={() => setMobileMenuOpen(false)}>
+                  My Profile
+                </NavLink>
+              </li>
+              <li className="mobile-only-link">
+                <button className="nav-drawer-logout-btn" onClick={() => { handleLogout(); setMobileMenuOpen(false); }}>
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : (
+            <li className="mobile-only-link">
+              <NavLink to="/login" className="nav-drawer-login-btn" onClick={() => setMobileMenuOpen(false)}>
+                Login
+              </NavLink>
+            </li>
+          )}
         </ul>
 
         {/* Navbar Action Icons */}
@@ -103,10 +153,10 @@ const Navbar = () => {
               <FiSearch />
             </button>
             {searchOpen && (
-              <form className="search-dropdown-form glassmorphism" onSubmit={handleSearchSubmit}>
+              <form className="search-dropdown-form" onSubmit={handleSearchSubmit}>
                 <input
                   type="text"
-                  placeholder="Search dresses, cosmetics, bags..."
+                  placeholder="Search brassware, sarees, pooja items..."
                   className="search-input"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -184,6 +234,33 @@ const Navbar = () => {
             </Link>
           )}
         </div>
+      </div>
+      
+      {/* Mobile Bottom Navigation Bar */}
+      <div className="mobile-bottom-nav">
+        <Link to="/" className={getNavItemClass('/')}>
+          <FiHome />
+          <span>Home</span>
+        </Link>
+        <Link to="/products?category=Brass Collection" className={getNavItemClass('/products', 'Brass Collection')}>
+          <FiLayers />
+          <span>Brass</span>
+        </Link>
+        <Link to="/products?category=Sarees" className={getNavItemClass('/products', 'Sarees')}>
+          <FiFeather />
+          <span>Sarees</span>
+        </Link>
+        <Link to="/cart" className={getNavItemClass('/cart')}>
+          <div className="bottom-nav-icon-badge-wrapper">
+            <FiShoppingCart />
+            {cartCount > 0 && <span className="bottom-nav-badge">{cartCount}</span>}
+          </div>
+          <span>Cart</span>
+        </Link>
+        <Link to="/profile" className={getNavItemClass('/profile')}>
+          <FiUser />
+          <span>Profile</span>
+        </Link>
       </div>
     </nav>
   );

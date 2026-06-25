@@ -8,39 +8,31 @@ const FilterSidebar = ({
   onResetFilters
 }) => {
   const categoriesList = [
+    'Brass Collection',
+    'Brass Lamps',
+    'Brass Idols',
+    'Brass Pooja',
     'Sarees',
-    'Kurtis',
-    'Dresses',
-    'Tops',
-    'Jeans',
-    'Handbags',
-    'Jewellery',
-    'Beauty',
-    'Cosmetics',
-    'Footwear',
-    'Accessories'
+    'Silk Sarees',
+    'Cotton Sarees',
+    'Wedding Sarees'
   ];
 
   const brandsList = [
-    'A1 Signature',
-    'TrendAura',
-    'Velvet Vogue',
-    'Urban Diva',
-    'Grace Studio',
-    'Bella Femme',
-    'Chic Avenue',
-    'Royal Threads'
+    'Brass Collection',
+    'Traditional Brass',
+    'Premium Sarees',
+    'Silk Collection',
+    'Wedding Collection'
   ];
 
   const colorsList = [
-    { name: 'Crimson Red', hex: '#7A1F3D' },
-    { name: 'Royal Gold', hex: '#C9A227' },
-    { name: 'Soft Cream', hex: '#FFF8F2' },
-    { name: 'Blush Pink', hex: '#FFD1DC' },
-    { name: 'Peach', hex: '#FFD3B6' },
-    { name: 'Mint Green', hex: '#E8F5E9' },
-    { name: 'Soft Sand', hex: '#F5ECE3' },
-    { name: 'Rose Gold', hex: '#B26F6F' }
+    { name: 'Deep Maroon', hex: '#7A1F3D' },
+    { name: 'Royal Brass Gold', hex: '#C5A059' },
+    { name: 'Traditional Gold', hex: '#D4AF37' },
+    { name: 'Warm Ivory', hex: '#FFFDF9' },
+    { name: 'Antique Gold/Bronze', hex: '#8C6239' },
+    { name: 'Pure White', hex: '#FFFFFF' }
   ];
 
   const handleCategoryToggle = (category) => {
@@ -132,7 +124,7 @@ const FilterSidebar = ({
 
       {/* Brands */}
       <div className="filter-group">
-        <span className="filter-label">Fashion Brands</span>
+        <span className="filter-label">Collections</span>
         <div className="category-checkboxes scrollable-checkboxes">
           {brandsList.map(brand => {
             const isChecked = filters.brands ? filters.brands.includes(brand) : false;

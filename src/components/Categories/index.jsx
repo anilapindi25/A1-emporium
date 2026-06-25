@@ -29,7 +29,6 @@ const Categories = () => {
   return (
     <section className="categories-section container">
       <div className="section-head text-center">
-        <span className="section-sub">Curated Selections</span>
         <h2 className="section-title">Shop by Category</h2>
         <div className="divider-gold"></div>
       </div>

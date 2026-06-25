@@ -1,494 +1,420 @@
-// Expanded Premium Women's Fashion & Lifestyle Dataset for A1 Emporium
+// Specialized Indian Traditional Emporium Dataset for A1 Emporium
+// Specialized exclusively in Brass Items and Sarees
 
 export const categories = [
-  { id: 'sarees', name: 'Sarees', image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&auto=format&fit=crop&q=80' },
-  { id: 'kurtis', name: 'Kurtis', image: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?w=800&auto=format&fit=crop&q=80' },
-  { id: 'dresses', name: 'Dresses', image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&auto=format&fit=crop&q=80' },
-  { id: 'tops', name: 'Tops', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=80' },
-  { id: 'jeans', name: 'Jeans', image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800&auto=format&fit=crop&q=80' },
-  { id: 'handbags', name: 'Handbags', image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop&q=80' },
-  { id: 'jewellery', name: 'Jewellery', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80' },
-  { id: 'beauty', name: 'Beauty', image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=800&auto=format&fit=crop&q=80' },
-  { id: 'cosmetics', name: 'Cosmetics', image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=800&auto=format&fit=crop&q=80' },
-  { id: 'footwear', name: 'Footwear', image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&auto=format&fit=crop&q=80' },
-  { id: 'accessories', name: 'Accessories', image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80' }
+  { id: 'brass-collection', name: 'Brass Collection', image: '/brass_kamdhenu_cow.png' },
+  { id: 'brass-lamps', name: 'Brass Lamps', image: '/brass_samay_lamp.png' },
+  { id: 'brass-idols', name: 'Brass Idols', image: '/brass_ganesha_statue.png' },
+  { id: 'brass-pooja', name: 'Brass Pooja', image: '/brass_pooja_thali_set.png' },
+  { id: 'sarees', name: 'Sarees', image: '/kanchipuram_gold_silk_saree.png' },
+  { id: 'silk-sarees', name: 'Silk Sarees', image: '/banarasi_brocade_saree.png' },
+  { id: 'cotton-sarees', name: 'Cotton Sarees', image: '/jamdani_cotton_saree.png' },
+  { id: 'wedding-sarees', name: 'Wedding Sarees', image: '/bridal_wedding_saree.png' }
 ];
 
 export const products = [
-  // APPAREL - TRADITIONAL
   {
     id: 'prod-001',
-    name: 'Kanchipuram Silk Brocade Bridal Saree',
-    brand: 'Royal Threads',
-    category: 'Sarees',
-    price: 19500,
-    originalPrice: 26000,
+    name: 'Pure Kanchipuram Gold Zari Silk Saree',
+    brand: 'Wedding Collection',
+    category: 'Silk Sarees',
+    price: 24500,
+    originalPrice: 32000,
     rating: 4.9,
-    reviewsCount: 215,
+    reviewsCount: 245,
     images: [
-      'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&auto=format&fit=crop&q=80'
+      '/kanchipuram_gold_silk_saree.png'
     ],
     stockStatus: 'In Stock',
     sizes: ['Free Size'],
     colors: [
       { name: 'Bridal Crimson', hex: '#7A1F3D' },
-      { name: 'Antique Gold', hex: '#C9A227' }
+      { name: 'Antique Gold', hex: '#C5A059' }
     ],
-    description: 'An exquisite Kanchipuram wedding saree hand-woven in pure mulberry silk with traditional gold border. Perfect for brides who cherish timeless ethnic royalty.',
+    description: 'An exquisite wedding saree hand-woven in pure mulberry silk with traditional gold border. Perfect for brides who cherish timeless ethnic royalty.',
     specifications: {
-      'Fabric': '100% Pure Silk',
-      'Weave Type': 'Kanchipuram Handloom',
+      'Fabric': '100% Pure Kanchipuram Silk',
+      'Weave Type': 'Handloom Double Warp',
       'Occasion': 'Bridal & Wedding',
       'Care': 'Dry Clean Only',
       'Zari': 'Pure Gold Thread'
     },
-    collection: 'Wedding',
+    collection: 'Sarees',
     isBestSeller: true
   },
   {
     id: 'prod-002',
-    name: 'Chikankari Hand-Embroidered Silk Kurti',
-    brand: 'Grace Studio',
-    category: 'Kurtis',
-    price: 4200,
-    originalPrice: 5800,
+    name: 'Handcrafted Royal Brass Peacock Diya Lamp',
+    brand: 'Traditional Brass',
+    category: 'Brass Lamps',
+    price: 3800,
+    originalPrice: 4900,
     rating: 4.8,
-    reviewsCount: 142,
+    reviewsCount: 164,
     images: [
-      'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?w=800&auto=format&fit=crop&q=80'
+      '/brass_peacock_diya.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['S', 'M', 'L', 'XL'],
+    sizes: ['Medium', 'Large'],
     colors: [
-      { name: 'Soft Cream', hex: '#FFF8F2' },
-      { name: 'Blush Pink', hex: '#FFD1DC' }
+      { name: 'Brass Yellow', hex: '#C5A059' }
     ],
-    description: 'A beautiful georgette-silk blended kurti showcasing Lucknow’s traditional shadow embroidery. Versatile for office and festive celebrations alike.',
+    description: 'A grand traditional brass oil lamp featuring an intricately detailed peacock figure. Adds sacred warmth and elegant heritage to your pooja mandir.',
     specifications: {
-      'Fabric': 'Georgette Silk Blend',
-      'Embroidery': 'Lucknowi Chikankari',
-      'Occasion': 'Festive / Office Wear',
-      'Care': 'Gentle Hand Wash'
+      'Material': 'Solid Brass',
+      'Weight': '1.8 kg',
+      'Height': '12 inches',
+      'Craftsmanship': 'Hand-cast by Indian Artisans'
     },
-    collection: 'Office Wear',
-    isBestSeller: false
+    collection: 'Brass Collection',
+    isBestSeller: true
   },
   {
     id: 'prod-003',
-    name: 'Zardozi Velvet Royal Wedding Lehenga Set',
-    brand: 'A1 Signature',
-    category: 'Dresses',
-    price: 45000,
-    originalPrice: 55000,
+    name: 'Sacred Lord Ganesha Antique Brass Statue',
+    brand: 'Brass Collection',
+    category: 'Brass Idols',
+    price: 8500,
+    originalPrice: 11000,
     rating: 5.0,
-    reviewsCount: 38,
+    reviewsCount: 82,
     images: [
-      'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&auto=format&fit=crop&q=80'
-    ],
-    stockStatus: 'Low Stock',
-    sizes: ['M', 'L', 'XL'],
-    colors: [
-      { name: 'Deep Burgundy', hex: '#7A1F3D' }
-    ],
-    description: 'Indulge in royal grandeur with this heavy velvet bridal lehenga set, adorned with gold Zardozi embroidery, dabka beads, and double matching drapes.',
-    specifications: {
-      'Fabric': 'Micro Velvet',
-      'Craft': 'Hand Zardozi',
-      'Occasion': 'Wedding Wear',
-      'Care': 'Professional Dry Clean Only'
-    },
-    collection: 'Wedding',
-    isBestSeller: true
-  },
-
-  // APPAREL - WESTERN & DRESSES
-  {
-    id: 'prod-004',
-    name: 'Floral Print Georgette Maxi Dress',
-    brand: 'Bella Femme',
-    category: 'Dresses',
-    price: 3200,
-    originalPrice: 4900,
-    rating: 4.6,
-    reviewsCount: 88,
-    images: [
-      'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&auto=format&fit=crop&q=80'
+      '/brass_ganesha_statue.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['XS', 'S', 'M', 'L'],
+    sizes: ['Standard'],
     colors: [
-      { name: 'Peach', hex: '#FFD3B6' },
-      { name: 'Mint Green', hex: '#E8F5E9' }
+      { name: 'Antique Gold', hex: '#C5A059' }
     ],
-    description: 'A breezy georgette tiered maxi dress featuring romantic floral prints and an adjustable waist belt. Ideal for summer lunches and resort outings.',
+    description: 'A heavy brass statue of Lord Ganesha in an antique finish. Represents wisdom, prosperity, and the removal of obstacles for a blessed home.',
     specifications: {
-      'Fabric': 'Poly Georgette',
-      'Length': 'Maxi (54 inches)',
-      'Occasion': 'Casual Summer',
-      'Care': 'Machine Wash'
+      'Material': 'Premium Brass',
+      'Weight': '4.2 kg',
+      'Height': '15 inches',
+      'Finish': 'Antique Bronze'
     },
-    collection: 'Summer Fashion',
+    collection: 'Brass Collection',
+    isBestSeller: true
+  },
+  {
+    id: 'prod-004',
+    name: 'Floral Brass Urli Bowl for Floating Flowers',
+    brand: 'Traditional Brass',
+    category: 'Brass Pooja',
+    price: 2600,
+    originalPrice: 3500,
+    rating: 4.7,
+    reviewsCount: 143,
+    images: [
+      '/brass_urli_floating.png'
+    ],
+    stockStatus: 'In Stock',
+    sizes: ['12 inch'],
+    colors: [
+      { name: 'Polished Brass', hex: '#C5A059' }
+    ],
+    description: 'A traditional Urli bowl with scalloped floral borders. Fill with water and float fresh jasmine flowers and tea lights to welcome guests with traditional warmth.',
+    specifications: {
+      'Material': 'Polished Brass',
+      'Diameter': '12 inches',
+      'Occasion': 'Festive / Welcome Decor',
+      'Care': 'Clean with pitambari powder occasionally'
+    },
+    collection: 'Brass Collection',
     isBestSeller: false
   },
   {
     id: 'prod-005',
-    name: 'Elegant Satin A-Line Slip Dress',
-    brand: 'Chic Avenue',
-    category: 'Dresses',
-    price: 4800,
-    originalPrice: 6500,
-    rating: 4.7,
-    reviewsCount: 94,
+    name: 'Traditional Brass Pooja Thali Set',
+    brand: 'Traditional Brass',
+    category: 'Brass Pooja',
+    price: 3200,
+    originalPrice: 4200,
+    rating: 4.9,
+    reviewsCount: 104,
     images: [
-      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&auto=format&fit=crop&q=80'
+      '/brass_pooja_thali_set.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['S', 'M', 'L'],
+    sizes: ['Full Set'],
     colors: [
-      { name: 'Champagne Gold', hex: '#C9A227' },
-      { name: 'Classic Black', hex: '#2C2C2C' }
+      { name: 'Brass Gold', hex: '#C5A059' }
     ],
-    description: 'Premium heavy satin slip dress with a cowl neck and side slit. Drapes beautifully to silhouette elegance for evening cocktail parties.',
+    description: 'A complete brass pooja thali set including plate, diya, bell, incense holder, and kuber bowls. Crafted for everyday rituals and festive home ceremonies.',
     specifications: {
-      'Fabric': 'Polyester Satin',
-      'Neckline': 'Cowl Neck',
-      'Occasion': 'Party Wear',
-      'Care': 'Dry Clean Recommended'
+      'Set Includes': 'Thali, Diya, Bell, Roli bowls, Spoon, Incense Stand',
+      'Material': 'Pure Brass',
+      'Diameter': '10.5 inches',
+      'Care': 'Avoid harsh scrubbers'
     },
-    collection: 'Western Wear',
-    isBestSeller: true
-  },
-  {
-    id: 'prod-006',
-    name: 'Lace Embroidered Cotton Top',
-    brand: 'Urban Diva',
-    category: 'Tops',
-    price: 1800,
-    originalPrice: 2400,
-    rating: 4.5,
-    reviewsCount: 61,
-    images: [
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=80'
-    ],
-    stockStatus: 'In Stock',
-    sizes: ['S', 'M', 'L', 'XL'],
-    colors: [
-      { name: 'Soft Cream', hex: '#FFF8F2' }
-    ],
-    description: 'A delicate white cotton top featuring fine lace inserts and puff sleeves, adding elegance to your everyday casual outfits.',
-    specifications: {
-      'Fabric': '100% Cotton',
-      'Detailing': 'Lace Applique',
-      'Occasion': 'Casual Wear',
-      'Care': 'Gentle Hand Wash'
-    },
-    collection: 'Summer Fashion',
+    collection: 'Brass Collection',
     isBestSeller: false
   },
   {
-    id: 'prod-007',
-    name: 'Sleek Linen Blazer & Pant Co-ord Set',
-    brand: 'Velvet Vogue',
-    category: 'Tops',
-    price: 6200,
-    originalPrice: 8500,
+    id: 'prod-006',
+    name: 'Royal Banarasi Brocade Silk Saree',
+    brand: 'Silk Collection',
+    category: 'Silk Sarees',
+    price: 18500,
+    originalPrice: 24000,
     rating: 4.8,
-    reviewsCount: 52,
+    reviewsCount: 112,
     images: [
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=80'
+      '/banarasi_brocade_saree.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['S', 'M', 'L'],
+    sizes: ['Free Size'],
     colors: [
-      { name: 'Soft Sand', hex: '#F5ECE3' }
+      { name: 'Mustard Gold', hex: '#C5A059' },
+      { name: 'Maroon Red', hex: '#7A1F3D' }
     ],
-    description: 'A tailored two-piece set combining a lightweight linen blazer with high-waist crop trousers. Elevates your executive style with comfort.',
+    description: 'A classic Banarasi silk saree decorated with gorgeous brocade work and fine silver-gold zari details. Features a heavy traditional pallu.',
     specifications: {
-      'Fabric': '100% Linen',
-      'Package Includes': '1 Blazer, 1 Trouser',
-      'Occasion': 'Office & Casual Chic',
-      'Care': 'Mild Detergent Wash'
+      'Fabric': 'Katan Silk',
+      'Weave': 'Banarasi Jacquard',
+      'Length': '5.5 meters with blouse',
+      'Care': 'Dry Clean Only'
     },
-    collection: 'Office Wear',
+    collection: 'Sarees',
+    isBestSeller: true
+  },
+  {
+    id: 'prod-007',
+    name: 'Sacred Lakshmi Antique Brass Idol',
+    brand: 'Brass Collection',
+    category: 'Brass Idols',
+    price: 7200,
+    originalPrice: 9500,
+    rating: 4.9,
+    reviewsCount: 63,
+    images: [
+      '/brass_lakshmi_idol.png'
+    ],
+    stockStatus: 'In Stock',
+    sizes: ['Standard'],
+    colors: [
+      { name: 'Antique Gold', hex: '#C5A059' }
+    ],
+    description: 'A highly detailed brass idol of Goddess Lakshmi in a seated posture. Perfect for invoking blessings of wealth and prosperity in your home.',
+    specifications: {
+      'Material': 'Solid Brass',
+      'Weight': '2.9 kg',
+      'Height': '10 inches'
+    },
+    collection: 'Brass Collection',
     isBestSeller: false
   },
   {
     id: 'prod-008',
-    name: 'High-Rise Slim Fit Denim Jeans',
-    brand: 'TrendAura',
-    category: 'Jeans',
-    price: 2900,
-    originalPrice: 3900,
+    name: 'Royal Brass Hanging Bell with Chain',
+    brand: 'Brass Collection',
+    category: 'Brass Pooja',
+    price: 4500,
+    originalPrice: 5800,
     rating: 4.7,
-    reviewsCount: 104,
+    reviewsCount: 45,
     images: [
-      'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800&auto=format&fit=crop&q=80'
+      '/brass_hanging_bell.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['28', '30', '32', '34'],
+    sizes: ['Standard'],
     colors: [
-      { name: 'Classic Blue', hex: '#B26F6F' }
+      { name: 'Gold', hex: '#C5A059' }
     ],
-    description: 'Premium stretch denim high-rise jeans. Slimming silhouette with a comfortable contoured waist that pairs perfectly with tops or blazers.',
+    description: 'Traditional temple hanging bell with chain, hand-cast in pure brass. Produces a loud and clear resonate sound for pooja and entryways.',
     specifications: {
-      'Fabric': 'Stretch Denim',
-      'Fit': 'Slim Fit',
-      'Occasion': 'Casual wear',
-      'Care': 'Machine wash cold'
+      'Material': 'Solid Brass',
+      'Chain Length': '18 inches',
+      'Bell Height': '6 inches',
+      'Weight': '1.5 kg'
     },
-    collection: 'Western Wear',
-    isBestSeller: true
+    collection: 'Brass Collection',
+    isBestSeller: false
   },
-
-  // HANDBAGS & FOOTWEAR
   {
     id: 'prod-009',
-    name: 'Gold Metallic Embroidery Potli Clutch',
-    brand: 'Royal Threads',
-    category: 'Handbags',
-    price: 1900,
-    originalPrice: 2800,
-    rating: 4.7,
-    reviewsCount: 110,
+    name: 'Classic Handloom Cotton Saree',
+    brand: 'Premium Sarees',
+    category: 'Cotton Sarees',
+    price: 3500,
+    originalPrice: 4800,
+    rating: 4.6,
+    reviewsCount: 120,
     images: [
-      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80'
+      '/jamdani_cotton_saree.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['One Size'],
+    sizes: ['Free Size'],
     colors: [
-      { name: 'Royal Gold', hex: '#C9A227' }
+      { name: 'Warm Cream', hex: '#FFFDF9' }
     ],
-    description: 'Handcrafted raw silk potli bag with detailed gold zari zardozi embroidery and pearl tassels. Perfect accessory for wedding ensembles.',
+    description: 'A breathable, eco-friendly cotton saree hand-woven by local rural weaver communities. Extremely comfortable and lightweight for daily ethnic wear.',
     specifications: {
-      'Material': 'Raw Silk & Pearls',
-      'Embellishment': 'Zari Handwork',
-      'Occasion': 'Bridal & Festivals',
-      'Closure': 'Drawstring'
+      'Fabric': '100% Cotton Handloom',
+      'Length': '6.2 meters with running blouse',
+      'Care': 'Gentle Hand Wash'
     },
-    collection: 'Festive Collection',
+    collection: 'Sarees',
     isBestSeller: false
   },
   {
     id: 'prod-010',
-    name: 'Saffiano Leather Work Tote Bag',
-    brand: 'Urban Diva',
-    category: 'Handbags',
+    name: 'Handcrafted Brass Kamdhenu Cow Idol',
+    brand: 'Brass Collection',
+    category: 'Brass Idols',
     price: 5900,
-    originalPrice: 7900,
+    originalPrice: 7500,
     rating: 4.8,
-    reviewsCount: 86,
+    reviewsCount: 42,
     images: [
-      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop&q=80'
+      '/brass_kamdhenu_cow.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['One Size'],
+    sizes: ['Standard'],
     colors: [
-      { name: 'Muted Maroon', hex: '#7A1F3D' }
+      { name: 'Antique Gold', hex: '#C5A059' }
     ],
-    description: 'A spacious saffiano vegan leather tote with gold-plated buckles and a padded laptop compartment. Blends functionality with executive class.',
+    description: 'A detailed brass statue of Kamdhenu Cow and Calf, symbolizing pure nurture, motherhood, and wish-fulfillment.',
     specifications: {
-      'Material': 'Premium Vegan Leather',
-      'Compartments': '3 Pockets + Laptop Sleeve',
-      'Occasion': 'Office Wear',
-      'Dimensions': '14" W x 11" H x 5" D'
+      'Material': 'Solid Brass',
+      'Weight': '2.2 kg',
+      'Dimensions': '8" x 5" x 6.5"'
     },
-    collection: 'Office Wear',
-    isBestSeller: true
+    collection: 'Brass Collection',
+    isBestSeller: false
   },
   {
     id: 'prod-011',
-    name: 'Embellished Block Heel Bridal Sandals',
-    brand: 'Velvet Vogue',
-    category: 'Footwear',
-    price: 3600,
-    originalPrice: 4900,
+    name: 'Heritage Handloom Jamdani Cotton Saree',
+    brand: 'Premium Sarees',
+    category: 'Cotton Sarees',
+    price: 12800,
+    originalPrice: 16500,
     rating: 4.9,
-    reviewsCount: 78,
+    reviewsCount: 88,
     images: [
-      'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&auto=format&fit=crop&q=80'
+      '/jamdani_cotton_saree.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['36', '37', '38', '39', '40'],
+    sizes: ['Free Size'],
     colors: [
-      { name: 'Champagne Gold', hex: '#C9A227' }
+      { name: 'Ivory White', hex: '#FFFDF9' },
+      { name: 'Traditional Maroon', hex: '#7A1F3D' }
     ],
-    description: 'Golden block heel sandals featuring premium stone details and padded insoles. Stay comfortable on your feet during festive celebrations.',
+    description: 'A masterpiece of handloom craft. Featuring intricate floral motifs woven directly on semi-sheer cotton fabric.',
     specifications: {
-      'Material': 'Synthetic Leather & Crystals',
-      'Heel Height': '3 Inches Block',
-      'Occasion': 'Wedding / Party',
-      'Insole': 'Cushioned memory foam'
+      'Fabric': 'Cotton Jamdani Blend',
+      'Weave': 'Traditional Hand Shuttle Jamdani',
+      'Occasion': 'Festivals & Occasions'
     },
-    collection: 'Wedding',
-    isBestSeller: true
+    collection: 'Sarees',
+    isBestSeller: false
   },
   {
     id: 'prod-012',
-    name: 'Casual Flat Leather Slides',
-    brand: 'Bella Femme',
-    category: 'Footwear',
-    price: 1500,
-    originalPrice: 2200,
-    rating: 4.6,
-    reviewsCount: 45,
+    name: 'Traditional Brass Kalash for Pooja',
+    brand: 'Traditional Brass',
+    category: 'Brass Pooja',
+    price: 2100,
+    originalPrice: 2800,
+    rating: 4.7,
+    reviewsCount: 76,
     images: [
-      'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&auto=format&fit=crop&q=80'
+      '/brass_pooja_kalash.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['36', '37', '38', '39', '40'],
+    sizes: ['Standard'],
     colors: [
-      { name: 'Soft Sand', hex: '#F5ECE3' }
+      { name: 'Brass Gold', hex: '#C5A059' }
     ],
-    description: 'Minimalist flat slides made from soft genuine leather with crossover straps. A perfect blend of style and ease for daily wear.',
+    description: 'A heavy gauge brass kalash used in traditional temple rituals and home grahapravesham. Finished in a high-gloss polished shine.',
     specifications: {
-      'Material': '100% Genuine Leather',
-      'Sole': 'Flexible rubber sole',
-      'Occasion': 'Casual Daily',
-      'Care': 'Wipe clean with dry cloth'
+      'Material': 'High Grade Brass',
+      'Volume': '1 liter',
+      'Height': '7 inches'
     },
-    collection: 'Summer Fashion',
+    collection: 'Brass Collection',
     isBestSeller: false
   },
-
-  // JEWELLERY & ACCESSORIES
   {
     id: 'prod-013',
-    name: 'Kundan & Green Bead Heritage Choker Set',
-    brand: 'Royal Threads',
-    category: 'Jewellery',
-    price: 8500,
-    originalPrice: 11000,
+    name: 'Royal Brass Samay Oil Lamp (Pair)',
+    brand: 'Traditional Brass',
+    category: 'Brass Lamps',
+    price: 6800,
+    originalPrice: 8500,
     rating: 4.9,
-    reviewsCount: 65,
+    reviewsCount: 54,
     images: [
-      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80'
+      '/brass_samay_lamp.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['Adjustable Size'],
+    sizes: ['18 inches'],
     colors: [
-      { name: 'Antique Gold', hex: '#C9A227' }
+      { name: 'Polished Brass', hex: '#C5A059' }
     ],
-    description: 'A heavy Kundan choker set detailed with hand-painted meenakari backing and emerald green drops. Includes matching jhumka earrings.',
+    description: 'A pair of tall traditional stand lamps (Samay) with 5-wick burners. Cast in premium quality brass for a warm glowing entranceway.',
     specifications: {
-      'Base Metal': 'Brass with 22K Gold Plating',
-      'Stone Type': 'Premium Kundan & Faux Emerald',
-      'Includes': '1 Choker, 2 Jhumkas',
-      'Care': 'Store in zip lock pouches, avoid moisture'
+      'Material': 'Solid Brass',
+      'Set Count': '2 Lamps (Pair)',
+      'Height': '18 inches each',
+      'Weight': '3.6 kg total'
     },
-    collection: 'Festive Collection',
+    collection: 'Brass Collection',
     isBestSeller: true
   },
   {
     id: 'prod-014',
-    name: 'Classic Rose Gold Mesh Bracelet Watch',
-    brand: 'TrendAura',
-    category: 'Accessories',
-    price: 7200,
-    originalPrice: 9800,
-    rating: 4.8,
-    reviewsCount: 120,
+    name: 'Exquisite Bridal Wedding Silk Saree',
+    brand: 'Wedding Collection',
+    category: 'Wedding Sarees',
+    price: 35000,
+    originalPrice: 45000,
+    rating: 5.0,
+    reviewsCount: 38,
     images: [
-      'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=800&auto=format&fit=crop&q=80'
+      '/bridal_wedding_saree.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['Adjustable Strap'],
+    sizes: ['Free Size'],
     colors: [
-      { name: 'Rose Gold', hex: '#B26F6F' }
+      { name: 'Deep Crimson Gold', hex: '#7A1F3D' }
     ],
-    description: 'Minimalist women’s luxury timepiece in a rose gold plated mesh bracelet and a mother-of-pearl dial. Elegant addition to office wear.',
+    description: 'A premium bridal heritage saree with heavy borders of genuine gold zari. Handwoven across three weeks to represent absolute Indian handloom perfection.',
     specifications: {
-      'Movement': 'Quartz Japanese Movement',
-      'Water Resistance': '30 Meters (3 ATM)',
-      'Dial Type': 'Mother-of-Pearl',
-      'Warranty': '2 Year Manufacturer Warranty'
+      'Fabric': '100% Pure Mulberry Silk',
+      'Zari Work': 'Gold Metallic Thread',
+      'Occasion': 'Bridal & Wedding Heritage'
     },
-    collection: 'Accessories Collection',
-    isBestSeller: false
+    collection: 'Sarees',
+    isBestSeller: true
   },
-
-  // BEAUTY & COSMETICS
   {
     id: 'prod-015',
-    name: 'Long-stay Matte Red Liquid Lipstick',
-    brand: 'Bella Femme',
-    category: 'Cosmetics',
-    price: 1200,
-    originalPrice: 1600,
-    rating: 4.7,
-    reviewsCount: 320,
-    images: [
-      'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=800&auto=format&fit=crop&q=80'
-    ],
-    stockStatus: 'In Stock',
-    sizes: ['5 ml'],
-    colors: [
-      { name: 'Crimson Red', hex: '#7A1F3D' }
-    ],
-    description: 'A transfer-proof, ultra-matte liquid lipstick that stays for up to 16 hours. Enriched with vitamin E for all-day lip comfort.',
-    specifications: {
-      'Ingredients': 'Cruelty-Free Synthetic Wax, Vitamin E',
-      'Stay': '16 Hours Long Lasting',
-      'Finish': 'Velvet Matte Finish',
-      'Cruelty Status': '100% Vegan & Cruelty-Free'
-    },
-    collection: 'Beauty Collection',
-    isBestSeller: true
-  },
-  {
-    id: 'prod-016',
-    name: 'Jasmine Sambac Luxe Eau de Parfum',
-    brand: 'Velvet Vogue',
-    category: 'Beauty',
-    price: 4500,
-    originalPrice: 5900,
+    name: 'Traditional Brass Urli Floral Decor Bowl',
+    brand: 'Traditional Brass',
+    category: 'Brass Pooja',
+    price: 4800,
+    originalPrice: 6200,
     rating: 4.8,
-    reviewsCount: 84,
+    reviewsCount: 67,
     images: [
-      'https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&auto=format&fit=crop&q=80'
+      '/brass_urli_floral.png'
     ],
     stockStatus: 'In Stock',
-    sizes: ['100 ml'],
+    sizes: ['14 inch'],
     colors: [
-      { name: 'Floral Clear', hex: '#FFFFFF' }
+      { name: 'Antique Gold', hex: '#C5A059' }
     ],
-    description: 'A premium fragrance opening with notes of fresh wild jasmine, layered with sandalwood and warm vanilla undertones. An elegant, sensuous scent.',
+    description: 'A wide traditional Urli bowl crafted in heavy brass with elegant side handles. Perfect for festive decorations, flower arrangements, or candle displays.',
     specifications: {
-      'Notes': 'Top: Jasmine, Heart: Sandalwood, Base: Vanilla',
-      'Concentration': 'Eau de Parfum (EDP)',
-      'Volume': '100 ml',
-      'Formulation': 'Liquid Spray'
+      'Material': 'Thick Gauge Brass',
+      'Diameter': '14 inches',
+      'Weight': '3.0 kg',
+      'Care': 'Polish occasionally with brass cleaning agents'
     },
-    collection: 'Beauty Collection',
+    collection: 'Brass Collection',
     isBestSeller: false
-  },
-  {
-    id: 'prod-017',
-    name: 'Glow Boosting Hyaluronic Acid Serum',
-    brand: 'TrendAura',
-    category: 'Beauty',
-    price: 2400,
-    originalPrice: 3200,
-    rating: 4.9,
-    reviewsCount: 154,
-    images: [
-      'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=800&auto=format&fit=crop&q=80'
-    ],
-    stockStatus: 'In Stock',
-    sizes: ['30 ml'],
-    colors: [
-      { name: 'Clear Serum', hex: '#FFFFFF' }
-    ],
-    description: 'Enriched with 2% pure hyaluronic acid and rose water. Deeply hydrates, plumps, and restores radiance to dull and tired skin.',
-    specifications: {
-      'Skin Type': 'All Skin Types (Sensitive Safe)',
-      'Key Ingredients': 'Hyaluronic Acid, Vitamin B5, Rose extracts',
-      'Volume': '30 ml',
-      'Application': 'Day & Night skincare'
-    },
-    collection: 'Beauty Collection',
-    isBestSeller: true
   }
 ];
 
@@ -498,32 +424,31 @@ export const reviews = [
     name: 'Sneha Reddy',
     location: 'Bangalore, India',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?w=100&auto=format&fit=crop&q=80',
-    text: 'A1 Emporium has transformed my wardrobe completely! Their satin slip dresses are of AJIO Luxe quality, and the Kundan choker set matches my bridal lehenga beautifully. Highly trust their premium customer care.'
+    avatar: 'https://ui-avatars.com/api/?name=Sneha+Reddy&background=7A1F3D&color=fff&size=100',
+    text: 'A1 Emporium has transformed my home completely! Their peacock brass lamp is heavy and premium, and the Kanchipuram gold saree matches my bridal celebrations beautifully. Highly trust their packaging.'
   },
   {
     id: 'rev-002',
     name: 'Tanvi Shah',
     location: 'Mumbai, India',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100&auto=format&fit=crop&q=80',
-    text: 'Impressed by the beauty collection! The Jasmine Sambac perfume smells expensive and stays all day. Fast delivery and premium dark maroon luxury packaging. Highly recommend A1 Emporium!'
+    avatar: 'https://ui-avatars.com/api/?name=Tanvi+Shah&background=C5A059&color=fff&size=100',
+    text: 'Impressed by the Pooja collection! The Urli bowl is gorgeous for floating flowers at my entryway. Fast delivery and premium burgundy luxury packaging. Highly recommend A1 Emporium!'
   },
   {
     id: 'rev-003',
     name: 'Ritika Sen',
     location: 'Kolkata, India',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=100&auto=format&fit=crop&q=80',
-    text: 'The linen co-ord set I ordered fits perfectly and looks extremely modern. Love the comparison drawer feature on the catalog page—made it so easy to pick the right outfit.'
+    avatar: 'https://ui-avatars.com/api/?name=Ritika+Sen&background=7A1F3D&color=fff&size=100',
+    text: 'The bridal wedding saree is a masterpiece! Heavy gold zari and absolute luxury feel. I compared three items using the comparison drawer before buying—best e-commerce feature ever!'
   }
 ];
 
 export const brandPartners = [
-  { name: 'A1 Signature', logo: '❀' },
-  { name: 'TrendAura', logo: '✦' },
-  { name: 'Velvet Vogue', logo: '✿' },
-  { name: 'Urban Diva', logo: '❄' },
-  { name: 'Grace Studio', logo: '❂' },
-  { name: 'Bella Femme', logo: '❃' }
+  { name: 'Brass Collection', logo: '❀' },
+  { name: 'Traditional Brass', logo: '✦' },
+  { name: 'Premium Sarees', logo: '✿' },
+  { name: 'Silk Collection', logo: '❂' },
+  { name: 'Wedding Collection', logo: '❃' }
 ];

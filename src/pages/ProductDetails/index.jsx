@@ -20,6 +20,9 @@ const ProductDetails = () => {
   
   const navigate = useNavigate();
   const { 
+    cartList,
+    onIncreaseQuantity,
+    onDecreaseQuantity,
     addToCart, 
     toggleWishlist, 
     isInWishlist, 
@@ -31,7 +34,6 @@ const ProductDetails = () => {
   const [activeImageIdx, setActiveImageIdx] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState(null);
-  const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description'); // 'description' | 'specifications'
   
   useEffect(() => {
@@ -40,7 +42,6 @@ const ProductDetails = () => {
     if (foundProduct) {
       setProduct(foundProduct);
       setActiveImageIdx(0);
-      setQuantity(1);
       // Pre-select first size and color
       if (foundProduct.sizes && foundProduct.sizes.length > 0) {
         setSelectedSize(foundProduct.sizes[0]);
@@ -69,28 +70,24 @@ const ProductDetails = () => {
   }
 
   const { name, price, originalPrice, rating, reviewsCount, images, stockStatus, category, description, specifications } = product;
+  const isBrass = category?.toLowerCase().includes('brass') || product.collection?.toLowerCase().includes('brass') || name?.toLowerCase().includes('brass');
   const isWishlisted = isInWishlist(product.id);
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
+
+  const cartItem = cartList.find(item => item.id === product.id);
+  const cartQuantity = cartItem ? cartItem.quantity : 0;
 
   // Filter 4 related products from the same category (excluding current)
   const relatedProducts = products
     .filter(p => p.category === category && p.id !== product.id)
     .slice(0, 4);
 
-  const handleQuantityChange = (val) => {
-    const newVal = quantity + val;
-    if (newVal >= 1) setQuantity(newVal);
-  };
-
   const handleAddToCartClick = () => {
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product, selectedSize, selectedColor);
-    }
-    alert(`${quantity} unit(s) of ${name} added to cart!`);
+    addToCart(product, isBrass ? undefined : selectedSize, isBrass ? undefined : selectedColor);
   };
 
   const handleBuyNowClick = () => {
-    addToCart(product, selectedSize, selectedColor);
+    addToCart(product, isBrass ? undefined : selectedSize, isBrass ? undefined : selectedColor);
     navigate('/cart');
   };
 
@@ -173,7 +170,7 @@ const ProductDetails = () => {
             <div className="divider-beige"></div>
 
             {/* Colors selection */}
-            {product.colors && product.colors.length > 0 && (
+            {!isBrass && product.colors && product.colors.length > 0 && (
               <div className="selection-group">
                 <span className="selection-label">Select Color</span>
                 <div className="color-swatches-row">
@@ -197,7 +194,7 @@ const ProductDetails = () => {
             )}
 
             {/* Sizes selection */}
-            {product.sizes && product.sizes.length > 0 && (
+            {!isBrass && product.sizes && product.sizes.length > 0 && (
               <div className="selection-group mt-6">
                 <span className="selection-label">Select Size</span>
                 <div className="size-buttons-row">
@@ -214,25 +211,23 @@ const ProductDetails = () => {
               </div>
             )}
 
-            {/* Quantity Selector */}
-            <div className="selection-group mt-6">
-              <span className="selection-label">Quantity</span>
-              <div className="quantity-details-adjuster">
-                <button className="qty-btn" onClick={() => handleQuantityChange(-1)} disabled={quantity <= 1}>-</button>
-                <span className="qty-num">{quantity}</span>
-                <button className="qty-btn" onClick={() => handleQuantityChange(1)} disabled={stockStatus === 'Out of Stock'}>+</button>
-              </div>
-            </div>
-
             {/* Action Buttons Row */}
             <div className="details-actions-row">
-              <button 
-                className="btn-gold details-cart-btn" 
-                onClick={handleAddToCartClick}
-                disabled={stockStatus === 'Out of Stock'}
-              >
-                <FiShoppingCart /> Add to Cart
-              </button>
+              {cartQuantity > 0 ? (
+                <div className="details-quantity-adjuster">
+                  <button className="qty-btn" onClick={() => onDecreaseQuantity(cartItem.cartItemId)}>-</button>
+                  <span className="qty-num">{cartQuantity}</span>
+                  <button className="qty-btn" onClick={() => onIncreaseQuantity(cartItem.cartItemId)} disabled={stockStatus === 'Out of Stock'}>+</button>
+                </div>
+              ) : (
+                <button 
+                  className="btn-gold details-cart-btn" 
+                  onClick={handleAddToCartClick}
+                  disabled={stockStatus === 'Out of Stock'}
+                >
+                  <FiShoppingCart /> Add to Cart
+                </button>
+              )}
 
               <button 
                 className="btn-maroon details-buy-btn" 
@@ -253,7 +248,7 @@ const ProductDetails = () => {
 
             <div className="divider-beige mt-8"></div>
 
-            {/* Description / Specifications tabs */}
+            {/* Description / Specifications / Reviews tabs */}
             <div className="details-tabs-container">
               <div className="tabs-header-row">
                 <button 
@@ -268,12 +263,19 @@ const ProductDetails = () => {
                 >
                   Specifications
                 </button>
+                <button 
+                  className={`tab-header-btn ${activeTab === 'reviews' ? 'active' : ''}`}
+                  onClick={() => setActiveTab('reviews')}
+                >
+                  Reviews ({reviewsCount})
+                </button>
               </div>
 
               <div className="tabs-content-body">
-                {activeTab === 'description' ? (
+                {activeTab === 'description' && (
                   <p className="tab-description-text">{description}</p>
-                ) : (
+                )}
+                {activeTab === 'specifications' && (
                   <table className="specs-table">
                     <tbody>
                       {Object.entries(specifications).map(([key, value]) => (
@@ -285,7 +287,71 @@ const ProductDetails = () => {
                     </tbody>
                   </table>
                 )}
+                {activeTab === 'reviews' && (
+                  <div className="reviews-tab-content">
+                    <div className="reviews-summary-row">
+                      <div className="rating-big-box">
+                        <span className="rating-big-num">{rating.toFixed(1)}</span>
+                        <div className="rating-big-stars">
+                          {[...Array(5)].map((_, i) => (
+                            <FaStar key={i} className={i < Math.floor(rating) ? 'star-active' : 'star-inactive'} style={{ color: i < Math.floor(rating) ? 'var(--secondary-gold)' : '#CCCCCC' }} />
+                          ))}
+                        </div>
+                        <span className="rating-total-reviews">Based on {reviewsCount} ratings</span>
+                      </div>
+                    </div>
+                    <div className="divider-beige" style={{ margin: '16px 0' }}></div>
+                    <div className="reviews-list">
+                      {category.includes('Saree') || category.includes('Silk') || category.includes('Cotton') ? (
+                        <>
+                          <div className="review-item">
+                            <div className="review-meta">
+                              <span className="review-author">Priya S.</span>
+                              <span className="review-stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p className="review-text">Absolutely stunning! The silk quality is pure, and the zari work is extremely detailed. Feels very elegant and perfect for weddings.</p>
+                          </div>
+                          <div className="review-item">
+                            <div className="review-meta">
+                              <span className="review-author">Meenakshi R.</span>
+                              <span className="review-stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p className="review-text">Bought it for my mother. She loved the traditional Banarasi weave. Prompt delivery and premium packaging. Value for money!</p>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="review-item">
+                            <div className="review-meta">
+                              <span className="review-author">Aditya V.</span>
+                              <span className="review-stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p className="review-text">Heavy, premium solid brass idol. The details on Ganesha face are carved beautifully. Highly recommended for home temple.</p>
+                          </div>
+                          <div className="review-item">
+                            <div className="review-meta">
+                              <span className="review-author">Sunita G.</span>
+                              <span className="review-stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p className="review-text">Stunning urli bowl, looks very festive. Easy to clean and polish. Middle-class budget-friendly but looks luxurious!</p>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
+            </div>
+
+            {/* Delivery Info Block */}
+            <div className="details-delivery-info-card mt-8">
+              <h4 className="delivery-card-title">Delivery Information</h4>
+              <ul className="delivery-info-list">
+                <li>🚚 <b>Free Standard Delivery</b> across India on orders above ₹5,000 (else ₹150 flat).</li>
+                <li>⏱️ <b>Dispatch Time</b>: Insured shipment dispatched within 24-48 hours. Delivered in 3-7 business days.</li>
+                <li>💵 <b>Cash on Delivery (COD)</b> is available at checkout.</li>
+                <li>📦 <b>Hassle-Free Returns</b>: Easy 7-day return policy for unused products.</li>
+              </ul>
             </div>
 
           </div>

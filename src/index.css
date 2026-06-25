@@ -4,22 +4,22 @@
   /* Color Palette */
   --primary-maroon: #7A1F3D;
   --primary-maroon-hover: #9E2D51;
-  --secondary-gold: #C9A227;
-  --secondary-gold-hover: #E5B834;
-  --bg-cream: #FFF8F2;
+  --secondary-gold: #C5A059;
+  --secondary-gold-hover: #DFBA73;
+  --bg-cream: #FFFDF9;
   --card-white: #FFFFFF;
   --text-dark: #2C2C2C;
   --text-muted: #6B7280;
   --accent-beige: #F5ECE3;
   --accent-light: #FAF5F0;
   
-  /* Gradients */
-  --gold-gradient: linear-gradient(135deg, #C9A227 0%, #E5C058 100%);
-  --maroon-gradient: linear-gradient(135deg, #7A1F3D 0%, #A63A5C 100%);
-  --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+  /* Gradients - Reduced to flat premium solid colors */
+  --gold-gradient: #C5A059;
+  --maroon-gradient: #7A1F3D;
+  --glass-gradient: #FFFFFF;
   
   /* Fonts */
-  --font-heading: 'Playfair Display', serif;
+  --font-heading: 'Poppins', sans-serif;
   --font-body: 'Poppins', sans-serif;
   --font-btn: 'Inter', sans-serif;
 
@@ -41,111 +41,112 @@
 }
 
 body.dark-theme {
-  --bg-cream: #0F172A;
-  --card-white: #1E293B;
-  --text-dark: #F8FAFC;
-  --text-muted: #CBD5E1;
-  --accent-beige: #334155;
-  --accent-light: #1E293B;
+  --bg-cream: #181A1B;
+  --card-white: #242729;
+  --text-dark: #F3F1ED;
+  --text-muted: #A0AEC0;
+  --accent-beige: #3A3F42;
+  --accent-light: #2A2E30;
   
   --primary-maroon: #7A1F3D;
   --primary-maroon-hover: #9E2D51;
-  --secondary-gold: #C9A227;
-  --secondary-gold-hover: #E6C65C;
+  --secondary-gold: #C5A059;
+  --secondary-gold-hover: #DFBA73;
   
-  --gold-gradient: linear-gradient(135deg, #C9A227 0%, #E6C65C 100%);
-  --maroon-gradient: linear-gradient(135deg, #7A1F3D 0%, #A63A5C 100%);
-  --glass-gradient: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(30, 41, 59, 0.4) 100%);
+  --gold-gradient: #C5A059;
+  --maroon-gradient: #7A1F3D;
+  --glass-gradient: var(--card-white);
   
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.8);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.7); /* high-contrast shadows suitable for dark mode */
 }
 
 /* Dark theme layout overrides */
 body.dark-theme .navbar-container {
-  background: #111827 !important;
-  border-bottom: 1px solid #334155 !important;
+  background: var(--card-white) !important;
+  border-bottom: 1px solid var(--accent-beige) !important;
 }
 
 body.dark-theme .footer-container {
-  background-color: #0B1120 !important;
-  color: #CBD5E1 !important;
+  background-color: #121415 !important;
+  color: var(--text-dark) !important;
 }
 
 body.dark-theme .footer-bottom {
-  background-color: #080C16 !important;
-  border-top: 1px solid #334155 !important;
+  background-color: #0E0F10 !important;
+  border-top: 1px solid var(--accent-beige) !important;
 }
 
 body.dark-theme .action-btn {
-  color: #CBD5E1 !important;
+  color: var(--text-dark) !important;
 }
 
 body.dark-theme .action-btn:hover {
-  background-color: #334155 !important;
-  color: #F8FAFC !important;
+  background-color: var(--accent-beige) !important;
+  color: var(--secondary-gold) !important;
 }
 
 body.dark-theme .logo-main,
 body.dark-theme .footer-logo .logo-main {
-  color: #F8FAFC !important;
+  color: var(--text-dark) !important;
 }
 
 body.dark-theme .logo-sub,
 body.dark-theme .footer-logo .logo-sub {
-  color: #FACC15 !important;
+  color: var(--secondary-gold) !important;
 }
 
 body.dark-theme .nav-link {
-  color: #CBD5E1 !important;
+  color: var(--text-dark) !important;
 }
 
 body.dark-theme .nav-link:hover,
 body.dark-theme .nav-link.active {
-  color: #FACC15 !important;
+  color: var(--secondary-gold) !important;
 }
 
 body.dark-theme .nav-link::after {
-  background-color: #FACC15 !important;
+  background-color: var(--secondary-gold) !important;
 }
 
 /* Icons and stars in dark mode */
 body.dark-theme .gold-star,
 body.dark-theme .star-icon {
-  color: #FACC15 !important;
+  color: var(--secondary-gold) !important;
 }
 
 body.dark-theme .feature-icon-wrapper,
 body.dark-theme .timer-icon {
-  color: #FACC15 !important;
-  background-color: #334155 !important;
+  color: var(--secondary-gold) !important;
+  background-color: var(--accent-beige) !important;
 }
 
 body.dark-theme .divider-gold,
 body.dark-theme .divider-beige {
-  background: #334155 !important;
-  border-color: #334155 !important;
+  background: var(--accent-beige) !important;
+  border-color: var(--accent-beige) !important;
 }
 
 body.dark-theme .checkbox-text {
-  color: #CBD5E1 !important;
+  color: var(--text-dark) !important;
 }
 
 body.dark-theme select,
 body.dark-theme input[type="text"],
+body.dark-theme input[type="tel"],
 body.dark-theme input[type="email"],
 body.dark-theme input[type="password"] {
-  background-color: #1E293B !important;
-  border: 1px solid #334155 !important;
-  color: #F8FAFC !important;
+  background-color: var(--card-white) !important;
+  border: 1px solid var(--accent-beige) !important;
+  color: var(--text-dark) !important;
 }
 
 body.dark-theme .glassmorphism {
-  background: rgba(30, 41, 59, 0.7) !important;
-  border: 1px solid rgba(51, 65, 85, 0.6) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
+  background: rgba(36, 39, 41, 0.85) !important;
+  border: 1px solid rgba(58, 63, 66, 0.6) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7) !important;
 }
 
 /* Base Styles */
@@ -219,19 +220,19 @@ button, input, select, textarea {
   box-shadow: var(--shadow-glass);
 }
 
-/* Custom Gradients & Buttons */
+/* Custom Flat & Trustworthy Buttons */
 .btn-gold {
   font-family: var(--font-btn);
   font-weight: 600;
   letter-spacing: 0.5px;
-  background: var(--gold-gradient);
+  background-color: var(--secondary-gold);
   color: var(--card-white);
   border: none;
   border-radius: var(--border-radius-md);
   padding: 12px 28px;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(201, 162, 39, 0.4);
-  transition: var(--transition-smooth);
+  box-shadow: 0 2px 6px rgba(197, 160, 89, 0.15);
+  transition: var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -239,23 +240,22 @@ button, input, select, textarea {
 }
 
 .btn-gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(201, 162, 39, 0.6);
-  background: var(--maroon-gradient);
+  background-color: #B59049;
+  box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
 }
 
 .btn-maroon {
   font-family: var(--font-btn);
   font-weight: 600;
   letter-spacing: 0.5px;
-  background: var(--maroon-gradient);
+  background-color: var(--primary-maroon);
   color: var(--card-white);
   border: none;
   border-radius: var(--border-radius-md);
   padding: 12px 28px;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(122, 31, 61, 0.3);
-  transition: var(--transition-smooth);
+  box-shadow: 0 2px 6px rgba(122, 31, 61, 0.15);
+  transition: var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -263,22 +263,21 @@ button, input, select, textarea {
 }
 
 .btn-maroon:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(122, 31, 61, 0.5);
-  background: var(--gold-gradient);
+  background-color: var(--primary-maroon-hover);
+  box-shadow: 0 4px 12px rgba(122, 31, 61, 0.3);
 }
 
 .btn-outline {
   font-family: var(--font-btn);
   font-weight: 600;
   letter-spacing: 0.5px;
-  background: transparent;
+  background-color: var(--card-white);
   color: var(--primary-maroon);
   border: 2px solid var(--primary-maroon);
   border-radius: var(--border-radius-md);
   padding: 10px 26px;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -286,9 +285,8 @@ button, input, select, textarea {
 }
 
 .btn-outline:hover {
-  background: var(--primary-maroon);
+  background-color: var(--primary-maroon);
   color: var(--card-white);
-  transform: translateY(-2px);
 }
 
 /* Floating Mandalas / Ethnic Motifs */
@@ -443,5 +441,11 @@ button, input, select, textarea {
   font-size: 12px;
   color: var(--text-muted);
   padding: 16px 0;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px !important;
+  }
 }
 

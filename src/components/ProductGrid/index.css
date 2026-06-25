@@ -226,8 +226,8 @@
 
 @media (max-width: 480px) {
   .product-grid-container.grid-view {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 }
 

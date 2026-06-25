@@ -320,6 +320,18 @@
 }
 
 @media (max-width: 768px) {
+  .checkout-body {
+    padding: 16px 16px 160px 16px !important;
+  }
+  
+  .checkout-title {
+    font-size: 24px !important;
+  }
+
+  .checkout-section-card {
+    padding: 20px !important;
+  }
+
   .form-group-half {
     grid-template-columns: 1fr;
     gap: 16px;

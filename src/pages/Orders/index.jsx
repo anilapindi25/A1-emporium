@@ -134,7 +134,10 @@ const Orders = () => {
                           <img src={item.images[0]} alt={item.name} className="item-thumb-img" />
                           <div className="item-thumb-details">
                             <span className="item-thumb-title">{item.name}</span>
-                            <span className="item-thumb-meta">Qty: {item.quantity} | Size: {item.selectedSize}</span>
+                            <span className="item-thumb-meta">
+                              Qty: {item.quantity}
+                              {!(item.category?.toLowerCase().includes('brass') || item.collection?.toLowerCase().includes('brass') || item.name?.toLowerCase().includes('brass')) && ` | Size: ${item.selectedSize}`}
+                            </span>
                           </div>
                           <span className="item-thumb-price">₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
                         </div>
