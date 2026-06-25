@@ -315,6 +315,7 @@ body.dark-theme .mobile-bottom-nav {
   transition: var(--transition-fast);
   padding: 4px 0;
   flex: 1;
+  min-width: 0;
   height: 100%;
 }
 
@@ -391,7 +392,7 @@ body.dark-theme .bottom-nav-badge {
   }
 
   .logo-main {
-    font-size: 16px !important;
+    font-size: 15px !important;
   }
 
   .logo-sub {
@@ -415,6 +416,7 @@ body.dark-theme .bottom-nav-badge {
     background-color: #FFFFFF !important;
     border-top: 1px solid var(--accent-beige) !important;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03) !important;
+    padding: 0 !important;
   }
   
   /* Mobile backdrop overlay style */
@@ -446,6 +448,16 @@ body.dark-theme .bottom-nav-badge {
 
   .navbar-actions .cart-icon-btn {
     display: flex !important;
+  }
+
+  .navbar-actions {
+    gap: 8px !important;
+  }
+
+  .action-btn {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 18px !important;
   }
 
   .navbar-actions .compare-icon-btn,

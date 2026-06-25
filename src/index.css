@@ -158,15 +158,18 @@ body.dark-theme .glassmorphism {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
-body {
+body, #root {
   font-family: var(--font-body);
   background-color: var(--bg-cream);
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
