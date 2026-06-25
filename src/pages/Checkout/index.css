@@ -319,7 +319,8 @@
 /* Responsive checkout layout */
 @media (max-width: 992px) {
   .checkout-layout-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+  grid-template-columns: 1fr 380px;
   }
 }
 
@@ -399,6 +400,69 @@
 .place-order-submit-btn{
     height:48px;
     font-size:14px;
+}
+
+}
+/* ===== Mobile Checkout Fix ===== */
+
+@media (max-width:480px){
+
+.checkout-layout-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.checkout-main-column,
+.checkout-summary-column{
+    width:100%;
+    max-width:100%;
+}
+
+.checkout-section-card{
+    width:100%;
+    max-width:100%;
+    padding:14px !important;
+    box-sizing:border-box;
+}
+
+.checkout-items-summary-list{
+    max-height:none;
+}
+
+.checkout-summary-item-row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.item-name-qty{
+    flex:1;
+    min-width:0;
+    white-space:normal;
+    overflow-wrap:break-word;
+}
+
+.coupon-apply-form{
+    display:flex;
+    width:100%;
+}
+
+.coupon-apply-form input{
+    flex:1;
+    min-width:0;
+}
+
+.apply-code-btn{
+    flex-shrink:0;
+}
+
+.place-order-submit-btn{
+    width:100%;
+}
+
+.invoice-grand-total-row{
+    flex-wrap:wrap;
+    gap:8px;
 }
 
 }
