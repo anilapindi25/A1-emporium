@@ -208,13 +208,12 @@ button, input, select, textarea {
 }
 
 /* Premium Layout Utilities */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+.container{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 20px;
 }
-
 .glassmorphism {
   background: var(--glass-gradient);
   backdrop-filter: blur(16px);
@@ -479,5 +478,20 @@ button, input, select, textarea {
   p {
     font-size: 14px !important;
   }
+
+}
+@media(max-width:768px){
+
+.container{
+    padding:0 16px;
+}
+
+}
+
+@media(max-width:480px){
+
+.container{
+    padding:0 12px;
+}
 
 }
