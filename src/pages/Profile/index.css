@@ -1,0 +1,337 @@
+.profile-page-container {
+  padding-top: 80px; /* offset navbar */
+  background-color: var(--bg-cream);
+  min-height: 100vh;
+}
+
+.profile-body {
+  padding: 48px 24px 80px 24px;
+}
+
+/* Layout Grid */
+.profile-layout-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Sidebar */
+.profile-nav-sidebar {
+  padding: 32px 24px;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.profile-header-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-avatar-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--maroon-gradient);
+  color: var(--card-white);
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--secondary-gold);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+}
+
+.profile-user-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  line-height: 1.2;
+}
+
+.profile-user-email {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.profile-tabs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.profile-tab-link {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--text-dark);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition-fast);
+}
+
+.profile-tab-link:hover {
+  background-color: var(--accent-beige);
+  color: var(--primary-maroon);
+}
+
+.profile-tab-link.active {
+  background-color: var(--primary-maroon);
+  color: var(--card-white);
+}
+
+.profile-tab-link.text-red {
+  color: var(--text-muted);
+}
+.profile-tab-link.text-red:hover {
+  color: #DC2626;
+  background-color: #FEE2E2;
+}
+
+.logout-tab-item {
+  margin-top: 24px;
+}
+
+/* Contents Area */
+.profile-content-area {
+  padding: 40px;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-sm);
+  min-height: 500px;
+}
+
+.profile-tab-content-panel h2 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--primary-maroon);
+  font-weight: 700;
+}
+
+.panel-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-addr-btn {
+  padding: 8px 16px;
+  font-size: 12px;
+  border-radius: var(--border-radius-md);
+}
+
+/* Personal info styling */
+.details-info-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-display-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--accent-beige);
+  padding-bottom: 12px;
+  font-size: 14px;
+}
+
+.info-display-row:last-child {
+  border-bottom: none;
+}
+
+.info-row-label {
+  font-weight: 700;
+  color: var(--primary-maroon);
+}
+
+.info-row-value {
+  color: var(--text-dark);
+}
+
+/* Address display */
+.address-display-box {
+  display: flex;
+  gap: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--accent-beige);
+  padding: 20px;
+  border-radius: var(--border-radius-lg);
+  align-items: flex-start;
+}
+
+.address-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--accent-beige);
+  color: var(--primary-maroon);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.address-details-text h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--primary-maroon);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.address-details-text p {
+  font-size: 13.5px;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.address-phone-txt {
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* Edit Address Form actions */
+.address-form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.address-form-actions button {
+  padding: 10px 24px;
+  font-size: 13px;
+  border-radius: var(--border-radius-md);
+}
+
+/* Empty Panels */
+.profile-empty-panel-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 24px;
+}
+
+.empty-panel-icon {
+  font-size: 48px;
+  color: var(--secondary-gold);
+  margin-bottom: 16px;
+}
+
+.profile-empty-panel-state h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--primary-maroon);
+  margin-bottom: 6px;
+}
+
+.profile-empty-panel-state p {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  max-width: 320px;
+}
+
+/* Order Rows List */
+.profile-orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-order-row-card {
+  border: 1px solid var(--accent-beige);
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+}
+
+.row-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row-order-id {
+  font-family: var(--font-btn);
+  font-weight: 700;
+  color: var(--primary-maroon);
+  font-size: 14.5px;
+  margin-right: 12px;
+}
+
+.row-order-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.row-order-status {
+  background-color: #D1FAE5;
+  color: #065F46;
+  font-family: var(--font-btn);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.row-card-body {
+  padding: 12px 0;
+  font-size: 13px;
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.row-card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.row-card-foot h4 {
+  font-family: var(--font-btn);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--primary-maroon);
+}
+
+/* Wishlist Grid */
+.profile-wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+/* Responsive profile layout */
+@media (max-width: 992px) {
+  .profile-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-content-area {
+    padding: 20px 16px;
+  }
+  
+  .profile-wishlist-grid {
+    grid-template-columns: 1fr;
+  }
+}

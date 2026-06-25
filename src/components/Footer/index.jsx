@@ -1,24 +1,78 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
+import './index.css';
 
-import React from 'react'
-
-function Footer() {
+const Footer = () => {
   return (
-    <div>
-      <footer className="home-footer">
-        <div className="footer-logo-title">
-          <img src="https://res.cloudinary.com/dsrifdfcy/image/upload/v1752118329/Group_7420_pjzzf1.png" alt="logo" className="logo" />
-          <span className="title">Tasty Kitchens</span>
+    <footer className="footer-container">
+      <div className="footer-top container">
+        {/* Brand Details */}
+        <div className="footer-brand-section">
+          <Link to="/" className="footer-logo">
+            <span className="logo-icon">A1</span>
+            <span className="logo-main">A1 Emporium</span>
+          </Link>
+          <p className="brand-tagline">"Where Tradition Meets Elegance."</p>
+          <p className="brand-desc">
+            Discover premium curated sarees, designer kurtis, bridal lehengas, and handloom fabrics sourced directly from India's traditional weaving clusters.
+          </p>
+          <div className="footer-socials">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Follow us on Instagram">
+              <FaInstagram />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Follow us on Facebook">
+              <FaFacebookF />
+            </a>
+            <a href="https://wa.me" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Contact us on WhatsApp">
+              <FaWhatsapp />
+            </a>
+          </div>
         </div>
-        <p>The only thing we are serious about is food.<br />Contact us on</p>
-        <div className="footer-social">
-          <a href="#"><img src="https://res.cloudinary.com/dsrifdfcy/image/upload/v1754116873/Frame_10_e8ocqg.png" alt="Instagram" /></a>
-          <a href="#"><img src="https://res.cloudinary.com/dsrifdfcy/image/upload/v1754116747/Vector_1_vwmtw4.png" alt="Pinterest" /></a>
-          <a href="#"><img src="https://res.cloudinary.com/dsrifdfcy/image/upload/v1754116914/Frame_11_jb3yu6.png" alt="Twitter" /></a>
-          <a href="#"><img src="https://res.cloudinary.com/dsrifdfcy/image/upload/v1754116955/Vector_2_gxlvgg.png" alt="Facebook" /></a>
-        </div>
-      </footer>
-    </div>
-  )
-}
 
-export default Footer
+        {/* Company Links */}
+        <div className="footer-links-section">
+          <h4 className="footer-heading">Company</h4>
+          <ul className="footer-links-list">
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/products">Collections</Link></li>
+          </ul>
+        </div>
+
+        {/* Legal & Policy Links */}
+        <div className="footer-links-section">
+          <h4 className="footer-heading">Customer Policies</h4>
+          <ul className="footer-links-list">
+            <li><Link to="/about#privacy">Privacy Policy</Link></li>
+            <li><Link to="/about#terms">Terms of Service</Link></li>
+            <li><Link to="/contact#locations">Store Locator</Link></li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div className="footer-links-section">
+          <h4 className="footer-heading">Boutique Office</h4>
+          <p className="contact-info-text">
+            A1 Emporium Building, Road No. 1,<br />
+            Banjara Hills, Hyderabad,<br />
+            Telangana - 500034
+          </p>
+          <p className="contact-info-text mt-4">
+            Email: contact@a1emporium.com<br />
+            Phone: +91 40 1234 5678
+          </p>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="container bottom-inner">
+          <p>&copy; {new Date().getFullYear()} A1 Emporium. All Rights Reserved. Crafted with Timeless Elegance.</p>
+          <p className="designer-tag">Boutique Indian Fashion Store</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

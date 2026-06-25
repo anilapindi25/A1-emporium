@@ -1,0 +1,112 @@
+.faqs-page-container {
+  padding-top: 80px; /* offset navbar */
+  background-color: var(--bg-cream);
+  min-height: 100vh;
+}
+
+/* Hero Banner */
+.faqs-hero-banner {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1600&auto=format&fit=crop&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+}
+
+.faqs-hero-banner .banner-text {
+  position: relative;
+  z-index: 5;
+  color: var(--card-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Body */
+.faqs-body {
+  padding: 60px 24px 80px 24px;
+}
+
+.faqs-layout-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.faqs-intro-text {
+  font-size: 14.5px;
+  color: var(--text-dark);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.faqs-accordion-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-accordion-item-card {
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.faq-accordion-item-card:hover, .faq-accordion-item-card.open {
+  border-color: var(--secondary-gold);
+  box-shadow: var(--shadow-md);
+}
+
+.faq-question-btn {
+  width: 100%;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-maroon);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq-toggle-icon {
+  font-size: 16px;
+  color: var(--secondary-gold);
+  display: flex;
+  align-items: center;
+}
+
+.faq-answer-container {
+  overflow: hidden;
+}
+
+.faq-answer-inner {
+  padding: 0 24px 24px 24px;
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 1.65;
+  border-top: 1px dashed var(--accent-beige);
+  padding-top: 16px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 576px) {
+  .faq-question-btn {
+    font-size: 15px;
+    padding: 16px;
+  }
+
+  .faq-answer-inner {
+    padding: 16px;
+  }
+}
